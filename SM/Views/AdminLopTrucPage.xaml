@@ -1,0 +1,134 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SM.Views.AdminLopTrucPage"
+             xmlns:vm="clr-namespace:SM.ViewModels"
+             BackgroundColor="{StaticResource bgr}">
+    <ContentPage.BindingContext>
+        <vm:AdminLopTrucViewModel/>
+    </ContentPage.BindingContext>
+    <Grid RowDefinitions="auto,auto,*,auto"
+          Margin="24,30,24,0">
+        <!--Calendar picker-->
+        <Grid Grid.Row="0"
+              RowDefinitions="auto,auto"
+              ColumnDefinitions="auto,*">
+            <ImageButton Grid.Column="0" Grid.RowSpan="2"
+                x:Name="Button_Calendar"
+                Style="{StaticResource IconButtonLarge}"
+                Source="ic_calendar.png"
+                />
+                <!--Text="{Binding , StringFormat='Tuần: {0}'}"-->
+            <Label Grid.Row="0" Grid.Column="1"
+                   Text="Tuần: 15"
+                Style="{StaticResource TextTitleStyle}"/>
+            
+                <!--Text="{Binding , StringFormat='Lớp: {0}'}"-->
+            <Label Grid.Row="1" Grid.Column="1"
+                   Text="Lớp: 10TT"
+                   Style="{StaticResource TextTitleStyle}"/>
+        </Grid>
+        <!--Date-->
+        <Label 
+            Grid.Row="1"
+            Text="Date"
+               />
+        
+        <!--Card VP-->
+        <CollectionView Grid.Row="2"
+                        ItemsSource="{Binding VPClasses}"
+                        IsGrouped="True" >
+        
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <!--Thẻ xem từng lớp-->
+                    <Grid Padding="0,10,0,0">
+                        <Frame Style="{StaticResource SDBEditAddView}">
+                            <Grid RowDefinitions="auto,*">
+                            <!--Template-->
+                                <Grid   Grid.Row="0"
+                                        ColumnDefinitions="auto,auto,*,auto">
+                                    <ImageButton Grid.Column="0"
+                                             Source="ic_delete.png"
+                                             Style="{StaticResource IconButtonLarge}"
+                                    />
+                                    <Label Grid.Column="1"
+                                           Text="{Binding ClassName}"
+                                           Style="{StaticResource TextTitleStyle}"/>
+                                    
+                                    <ImageButton Grid.Column="3"
+                                             Source="ic_edit_black.png"
+                                             Style="{StaticResource IconButtonLarge}"
+                                    />
+                                </Grid>
+                                
+                            <!--Từng Vi phạm
+                                ItemsSource="{Binding VPGroup}"
+                                                IsGrouped="True"-->
+                                <CollectionView Grid.Row="1"
+                                                >
+                                               
+                                    <CollectionView.ItemTemplate>
+                                        <DataTemplate>
+                                            <Grid Padding="0,3,0,0">
+                                                <Frame>
+                                                    <Grid ColumnDefinitions="auto,*">
+
+                                                    <!--Binding here-->
+                                                        <Label Grid.Column="0"
+                                                               Text="{Binding ViPhamName}"
+                                                               Style="{StaticResource TextTitleStyle}"/>
+                                                        
+                                                    <!--Tên các học sinh vi phạm
+                                                                        IsGrouped="True"
+                                                                        ItemsSource="{Binding VPHSName}"-->
+                                                        <CollectionView Grid.Column="1"
+                                                                        >
+                                                            <CollectionView.ItemsLayout>
+                                                                <GridItemsLayout Orientation="Horizontal"></GridItemsLayout>
+                                                            </CollectionView.ItemsLayout>
+                                                            <CollectionView.ItemTemplate>
+                                                                <DataTemplate>
+                                                                    <Grid Padding="3,0,0,0">
+                                                                        <Frame Style="{StaticResource TagName}">
+                                                                            <StackLayout Orientation="Horizontal">
+                                                                                <ImageButton
+                                                                                    x:Name="Delete_HS"
+                                                                                    Source="ic_detete.png"
+                                                                                    Style="{StaticResource IconButtonSmall}"/>
+                                                                                
+                                                                            <!--Binding here-->
+                                                                                <Label Text="{Binding HSName}"
+                                                                                       Style="{StaticResource TextSmallStyle}"/>
+                                                                            </StackLayout>
+                                                                        </Frame>
+                                                                    </Grid>
+                                                                </DataTemplate>
+                                                            </CollectionView.ItemTemplate>
+                                                        </CollectionView>
+                                                    </Grid>
+                                                </Frame>
+                                            </Grid>
+                                        </DataTemplate>
+                                    </CollectionView.ItemTemplate>
+                                </CollectionView>
+                            </Grid>
+                        </Frame>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+        
+        <!--Button Xác nhận-->
+        <Button
+                Grid.Row="3"
+                x:Name="BtnAccept"
+                Text="Xác Nhận"
+                TextTransform="None"
+                Margin="0,22,0,0"
+                Padding="0,0,1,0"       
+                Style="{StaticResource btnblack}"
+                Clicked="BtnAccept_Clicked"
+                />
+    </Grid>
+</ContentPage>

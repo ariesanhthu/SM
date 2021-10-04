@@ -1,0 +1,121 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SM.Views.SDBEditPage"
+             xmlns:vm="clr-namespace:SM.ViewModels"
+             Shell.PresentationMode="Modal"
+             Shell.TabBarIsVisible="False"
+             Shell.NavBarIsVisible="False"
+             BackgroundColor="{StaticResource bgr}">
+    <ContentPage.BindingContext>
+        <vm:SoDauBaiViewModel/>
+    </ContentPage.BindingContext>
+
+    <StackLayout BindingContext="{Binding SdbEdit}"
+                 Margin="34,24,34,20">
+        <Label Text="{Binding Date}"
+               Style="{StaticResource TextSmallStyle}"
+               FontSize="12"/>
+        
+        <Label Text="{Binding Subject}"
+               Style="{StaticResource TextTitleStyle}"
+               FontSize="20"/>
+        
+        <Label Text="{Binding PPCT, StringFormat='PPCT: {0}'}"
+               Style="{StaticResource TextNormalLarge}"/>
+        
+        <Label Text="{Binding LessonName}"
+               Style="{StaticResource TextNormalLarge}"/>
+        
+        <Label Text="Điểm các mặt:"
+               Style="{StaticResource TextNormalLarge}"/>
+        
+        <Label Text="{Binding Point1, StringFormat='[1] Chuyên Cần: {0}'}"
+               Style="{StaticResource TextNormalStyle}"/>
+
+        <Label Text="{Binding Point2, StringFormat='[2] Chuyên Cần: {0}'}"
+               Style="{StaticResource TextNormalStyle}"/>
+
+        <Label Text="{Binding Point3, StringFormat='[3] Chuyên Cần: {0}'}"
+               Style="{StaticResource TextNormalStyle}"/>
+
+        <!--Vắng-->
+        <Grid ColumnDefinitions="*,auto">
+            
+            <Label Grid.Column="0"
+                    Text="{Binding Absent, StringFormat='Vắng: {0}'}"
+                   Style="{StaticResource TextNormalLarge}"/>
+            <ImageButton Grid.Column="1"
+                x:Name="Button_Absent"
+                Clicked="Button_Absent_Clicked"
+                Source="ic_add.png"
+                Style="{StaticResource IconButtonLarge}"
+                HorizontalOptions="End"
+                VerticalOptions="Center"/>
+            
+        </Grid>
+        
+        <!--Vi Phạm-->
+        <Grid ColumnDefinitions="*,auto">
+
+            <Label Grid.Column="0"
+                    Text="{Binding VP, StringFormat='Vi Phạm: {0}'}"
+                   Style="{StaticResource TextNormalLarge}"/>
+
+            <ImageButton Grid.Column="1"
+                x:Name="Button_VP"
+                Clicked="Button_VP_Clicked"
+                Source="ic_add.png"
+                Style="{StaticResource IconButtonLarge}"
+                HorizontalOptions="End"
+                VerticalOptions="Center"/>
+        </Grid>
+        
+        <Label Text="{Binding Xeploai, StringFormat='Xếp loại: {0}'}"
+               Style="{StaticResource TextNormalLarge}"/>
+
+        <!--Nhận xét-->
+        <Frame CornerRadius="20"
+               HasShadow="True">
+            <Grid>
+                <Editor Text="{Binding Nhanxet}"
+                        TextColor="Black"
+                        HorizontalOptions="CenterAndExpand"
+                        VerticalOptions="CenterAndExpand"/>
+                <!--Tiết học tốt-->
+                <ImageButton
+                    x:Name="GoodLesson"
+                    Source="{Binding IconStart}"
+                    Style="{StaticResource IconButtonLarge}"
+                    HorizontalOptions="End"
+                    VerticalOptions="Center"
+                    />
+            </Grid>
+        </Frame>
+        
+        <Label Text="{Binding GvName}"
+               Style="{StaticResource TextSmallStyle}"
+               FontSize="15"
+               HorizontalOptions="End"/>
+        <Button Text="{Binding Diemdanh}"
+                FontSize="10"
+                CornerRadius="90"
+                BorderColor="{StaticResource blue}"
+                BorderWidth="2"
+                TextColor="Black"
+                BackgroundColor="White"
+                WidthRequest="50"
+                HeightRequest="35"/>
+        
+        <Button
+                x:Name="BtnAccept"
+                Text="Xác Nhận"
+                TextTransform="None"
+                Margin="0,22,0,0"
+                Padding="0,0,1,0"       
+                Style="{StaticResource btnblack}"
+                Clicked="BtnAccept_Clicked"
+                />
+    </StackLayout>
+        
+</ContentPage>

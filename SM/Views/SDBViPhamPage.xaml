@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:SM.ViewModels"
+             x:Class="SM.Views.SDBViPhamPage"
+             Shell.PresentationMode="Modal"
+             Shell.TabBarIsVisible="False"
+             Shell.NavBarIsVisible="False"
+             BackgroundColor="{StaticResource bgr}">
+    <ContentPage.BindingContext>
+        <vm:SoDauBaiViewModel/>
+    </ContentPage.BindingContext>
+    <StackLayout  Margin="20,24,20,20">
+    <!--Thông tin cơ bản tiết học-->
+        <StackLayout BindingContext="{Binding SdbEdit}">
+        
+            <Label Text="{Binding Date}"
+                   Style="{StaticResource TextSmallStyle}"
+                   FontSize="12"/>
+
+            <Label Text="{Binding Subject}"
+                   Style="{StaticResource TextTitleStyle}"/>
+
+            <Label Text="{Binding PPCT, StringFormat='PPCT: {0}'}"
+                   Style="{StaticResource TextNormalStyle}"/>
+
+            <Label Text="{Binding LessonName}"
+                   Style="{StaticResource TextNormalStyle}"/>
+        
+            <!--Tổng kết điểm, số lượt vi phạm-->
+                <StackLayout Orientation="Horizontal"
+                             Margin="10,0,10,0">
+            
+                    <Frame Style="{StaticResource CardTotalStyle}">
+                        <Label
+                            Text="{Binding VP, StringFormat='Vi phạm: {0}'}"
+                            Style="{StaticResource TextNormalStyle}"
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center"/>
+                    </Frame>
+            
+                    <!--Binding Tổng điểm-->
+                    <Frame Style="{StaticResource CardTotalStyle}">
+                        <Label
+                            Text="{Binding VP, StringFormat='Tổng điểm: {0}'}"
+                            Style="{StaticResource TextNormalStyle}"
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center"/>
+                    </Frame>
+                </StackLayout>
+        </StackLayout>
+    
+    <!--Thẻ vi phạm-->
+        <CollectionView ItemsSource="{Binding Viphams}"
+                        >
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Padding="0,10,0,0">
+                        <Frame Style="{StaticResource SDBEditAddView}">
+                            <Grid RowDefinitions="auto,*,auto"
+                                  ColumnDefinitions="auto,*,auto,auto">
+                                <ImageButton Grid.Row="0" Grid.Column="0"
+                                             Source="ic_delete.png"
+                                             Style="{StaticResource IconButtonStyle}"
+                                    />
+
+                                <Label Grid.Row="0" Grid.Column="1"
+                                    HorizontalOptions="Start"
+                                    Text="{Binding ViPhamName}"
+                                    Style="{StaticResource TextTitleStyle}"/>
+                                <Label Grid.Row="0" Grid.Column="2"
+                                       Text="{Binding DiemTru}"
+                                       Style="{StaticResource TextSmallStyle}"
+                                       HorizontalOptions="End"/>
+                                
+                                <!--Edit Button Add view-->
+                                <ImageButton Grid.Row="0" Grid.Column="3"
+                                             HorizontalOptions="Start"
+                                             Source="ic_edit_black.png"
+                                             Style="{StaticResource IconButtonStyle}"/>
+                                
+                                <!--Tên người vi phạm-->
+                                <Label Grid.Row="1" Grid.ColumnSpan="4"
+                                       HorizontalOptions="Start"
+                                       VerticalOptions="Start"
+                                    Text="Giang"
+                                    Style="{StaticResource TextNormalStyle}"
+                                       />
+                            </Grid>
+                        </Frame>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+        
+    <!--Xác nhận-->
+        <Button
+                x:Name="BtnAccept"
+                Text="Xác Nhận"
+                TextTransform="None"
+                Margin="0,22,0,50"
+                Padding="0,0,1,0"       
+                Style="{StaticResource btnblack}"
+                Clicked="BtnAccept_Clicked"
+                />
+    </StackLayout>
+
+</ContentPage>

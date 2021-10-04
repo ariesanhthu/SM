@@ -1,0 +1,190 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SM.App">
+    <Application.Resources>
+        <!--color main app-->
+        <ResourceDictionary>
+            <Color x:Key="blue">#98ABF9</Color>
+            <Color x:Key="black">#23233C</Color>
+            <Color x:Key="red">#FC4755</Color>
+            <Color x:Key="gray">#BCC1CD</Color>
+            <Color x:Key="yellow">#FAD207</Color>
+            <Color x:Key="orange">#FAA515</Color>
+            <Color x:Key="bgr">#F4F5FA</Color>
+
+            <!--TabBar BaseStyle AppShell-->
+            <Style x:Key="BaseStyle" TargetType="Shell">
+                <Setter Property="Shell.TabBarBackgroundColor" Value="{StaticResource blue}"/>
+                <Setter Property="Shell.UnselectedColor" Value="White"/>
+                <Setter Property="Shell.TitleColor" Value="{StaticResource black}"/>
+            </Style>
+            <!--entry in logint, register page (color, margin, font, width, height)-->
+            <Style x:Key="entrystyle" TargetType="Entry">
+                <Setter Property="BackgroundColor" Value="White"/>
+                <Setter Property="TextColor" Value="Black"/>
+                <Setter Property="HorizontalOptions" Value="Center"/>
+                <Setter Property="WidthRequest" Value="300"/>
+                <Setter Property="HeightRequest" Value="40"/>
+                <Setter Property="Margin" Value="0,20,0,0"/>
+                <Setter Property="PlaceholderColor" Value="{StaticResource gray}"/>
+                <Setter Property="FontSize" Value="Small"/>
+            </Style>
+
+            <!--button main used to accepted-->
+            <Style x:Key="btnblack" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="{StaticResource black}"/>
+                <Setter Property="WidthRequest" Value="260"/>
+                <Setter Property="HeightRequest" Value="40"/>
+                <Setter Property="TextTransform" Value="None"/>
+                <Setter Property="CornerRadius" Value="15"/>
+                <Setter Property="BorderWidth" Value="2"/>
+                <Setter Property="BorderColor" Value="{StaticResource blue}"/>
+                <Setter Property="TextColor" Value="White"/>
+                <Setter Property="HorizontalOptions" Value="Center"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+            </Style>
+            
+        <!--Style CARDVIEWS in MOREPAGE-->
+            
+            <!--Frame Style : Contain Image and Label-->
+            <Style x:Key="CardviewFrameStyle" TargetType="Frame" >
+                <Setter Property="HasShadow" Value="True"/>
+                <Setter Property="CornerRadius" Value="20"/>
+                <Setter Property="HorizontalOptions" Value="CenterAndExpand"/>
+                <Setter Property="Margin" Value="0"/>
+                <Setter Property="Padding" Value="0"/>
+            </Style>
+            <!--StackLayout Style-->
+            <Style x:Key="CardviewStackLayout" TargetType="StackLayout">
+                <Setter Property="HeightRequest" Value="150"/>
+                <Setter Property="WidthRequest" Value="250"/>
+            </Style>
+            <!--Image Button Style is Background of Cardview, in StackLayout-->
+            <Style x:Key="CardviewImageStyle" TargetType="Image">
+                <Setter Property="VerticalOptions" Value="FillAndExpand"/>
+                <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+                <Setter Property="Aspect" Value="AspectFill"/>
+            </Style>
+            <!--Title Style, in StackLayout-->
+            <Style x:Key="CardviewLabelStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="White"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="FontSize" Value="20"/>
+                <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
+                <Setter Property="HorizontalOptions" Value="CenterAndExpand"/>
+                <Setter Property="Margin" Value="10,0"/>
+            </Style>
+            
+            <!--Text Title Style-->
+            <Style x:Key="TextTitleStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="Black"/>
+                <Setter Property="FontSize" Value="15"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+            </Style>
+            <!--Text Style with Normal font (card)-->
+            <Style x:Key="TextNormalStyle" TargetType="Label">
+                <Setter Property="FontSize" Value="10"/>
+                <Setter Property="TextColor" Value="Black"/>
+                <Setter Property="HorizontalOptions" Value="Start"/>
+                <Setter Property="VerticalOptions" Value="Center"/>
+            </Style>
+            <!--Text Style with Normal font (Page view)-->
+            <Style x:Key="TextNormalLarge" TargetType="Label">
+                <Setter Property="FontSize" Value="15"/>
+                <Setter Property="TextColor" Value="Black"/>
+                <Setter Property="HorizontalOptions" Value="Start"/>
+                <Setter Property="VerticalOptions" Value="Center"/>
+            </Style>
+            <!--Icon Style-->
+            <Style x:Key="IconStyle" TargetType="Image">
+                <Setter Property="HeightRequest" Value="15"/>
+                <Setter Property="WidthRequest" Value="15"/>
+                <Setter Property="Aspect" Value="AspectFit"/>
+            </Style>
+            
+            <!--IconButton Style-->
+            <Style x:Key="IconButtonStyle" TargetType="ImageButton">
+                <Setter Property="HeightRequest" Value="15"/>
+                <Setter Property="WidthRequest" Value="15"/>
+                <Setter Property="Aspect" Value="AspectFit"/>
+                <Setter Property="BackgroundColor" Value="Transparent"/>
+            </Style>
+            <!--IconButtonLarge-->
+            <Style x:Key="IconButtonLarge" TargetType="ImageButton">
+                <Setter Property="HeightRequest" Value="18"/>
+                <Setter Property="WidthRequest" Value="18"/>
+                <Setter Property="Aspect" Value="AspectFit"/>
+                <Setter Property="BackgroundColor" Value="Transparent"/>
+            </Style>
+
+            <!--IconButtonSmall-->
+            <Style x:Key="IconButtonSmall" TargetType="ImageButton">
+                <Setter Property="HeightRequest" Value="10"/>
+                <Setter Property="WidthRequest" Value="10"/>
+                <Setter Property="Aspect" Value="AspectFit"/>
+                <Setter Property="BackgroundColor" Value="Transparent"/>
+            </Style>
+
+            <Style x:Key="DateStyle" TargetType="Label">
+                <Setter Property="FontSize" Value="10"/>
+                <Setter Property="TextColor" Value="{StaticResource gray}"/>
+            </Style>
+            
+            <Style x:Key="BtnToday" TargetType="Button">
+                <Setter Property="HeightRequest" Value="40"/>
+                <Setter Property="WidthRequest" Value="80"/>
+                <Setter Property="BackgroundColor" Value="{StaticResource blue}"/>
+                <Setter Property="Text" Value="Hôm nay"/>
+                <Setter Property="TextColor" Value="White"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="FontSize" Value="10"/>
+                <Setter Property="VerticalOptions" Value="Center"/>
+                <Setter Property="CornerRadius" Value="8"/>
+            </Style>
+            
+            <Style x:Key="TimeStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="Black"/>
+                <Setter Property="FontSize" Value="15"/>
+                <Setter Property="HorizontalOptions" Value="Start"/>
+                <Setter Property="VerticalOptions" Value="Start"/>
+                <Setter Property="Margin" Value="10,10,0,0"/>
+            </Style>
+            
+            <!--Chữ nghiêng nhỏ-->
+            <Style x:Key="TextSmallStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="Black"/>
+                <Setter Property="FontSize" Value="10"/>
+                <Setter Property="HorizontalOptions" Value="End"/>
+                <Setter Property="FontAttributes" Value="Italic"/>
+            </Style>
+            
+        <!--Edit Sổ Đầu Bài, Page: Vi phạm, Vắng-->
+            <!--Thẻ hiển thị tổng số lượt vi phạm, vắng, điểm-->
+            <Style x:Key="CardTotalStyle" TargetType="Frame">
+                <Setter Property="BackgroundColor" Value="White"/>
+                <Setter Property="HeightRequest" Value="20"/>
+                <Setter Property="WidthRequest" Value="130"/>
+                <Setter Property="CornerRadius" Value="20"/>
+                <Setter Property="BorderColor" Value="{StaticResource blue}"/>
+            </Style>
+            <!--Thẻ thêm Sổ đầu bài-->
+            <Style x:Key="SDBEditAddView" TargetType="Frame">
+                <Setter Property="BackgroundColor" Value="White"/>
+                <Setter Property="HeightRequest" Value="105"/>
+                <Setter Property="WidthRequest" Value="300"/>
+                <Setter Property="CornerRadius" Value="20"/>
+                <Setter Property="BorderColor" Value="{StaticResource blue}"/>
+            </Style>
+            
+        <!--Frame Tag-->
+            <Style x:Key="TagName" TargetType="Frame">
+                <Setter Property="BackgroundColor" Value="White"/>
+                <Setter Property="HeightRequest" Value="20"/>
+                <Setter Property="WidthRequest" Value="35"/>
+                <Setter Property="CornerRadius" Value="30"/>
+                <Setter Property="BorderColor" Value="{StaticResource blue}"/>
+            </Style>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

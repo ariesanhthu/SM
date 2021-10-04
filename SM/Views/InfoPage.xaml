@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SM.Views.InfoPage"
+             xmlns:vm="clr-namespace:SM.ViewModels"
+             Shell.NavBarIsVisible="False"
+             BackgroundColor="{StaticResource bgr}">
+    <ContentPage.BindingContext>
+        <vm:InfoViewModel/>
+    </ContentPage.BindingContext>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="IconStyle" TargetType="Image">
+                <Setter Property="HeightRequest" Value="14"/>
+                <Setter Property="WidthRequest" Value="14"/>
+                <Setter Property="Aspect" Value="AspectFit"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <Grid>
+        <CollectionView ItemsSource="{Binding Infos}"
+                        IsGrouped="True"
+                        Margin="20,20,20,0">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Padding="0,10,0,0">
+                        
+                    <Frame BackgroundColor="White"
+                           HasShadow="True"
+                           CornerRadius="20"
+                           >
+                        <Grid RowDefinitions="auto,auto,auto,auto"
+                              ColumnDefinitions="auto,auto"
+                              Padding="5,0,0,0"
+                              >
+                            <Label Text="{Binding Name}"
+                                     Style="{StaticResource TextNormalStyle}"
+                                     HorizontalOptions="Start"
+                                     VerticalOptions="Center"
+                                     Grid.Row="0"
+                                     Grid.Column="1"/>
+                            <Label 
+                                 Text="{Binding PhoneNumber}"
+                                 Grid.Column="1"
+                                 Grid.Row="1"
+                                 Style="{StaticResource TextNormalStyle}"
+                                 />
+                            <Label 
+                                Text="{Binding Email}"
+                                Grid.Row="2"
+                                Grid.Column="1"
+                                Style="{StaticResource TextNormalStyle}"
+                                />
+                            <Label
+                                Text="{Binding Address}"
+                                Grid.Row="3"
+                                Grid.Column="1"
+                                Style="{StaticResource TextNormalStyle}"
+                                />
+                            <Image
+                                Grid.Column="0"
+                                Grid.Row="1"
+                                Source="ic_phone.png"
+                                Style="{StaticResource IconStyle}"
+                                />
+                            <Image
+                                Grid.Column="0"
+                                Grid.Row="2"
+                                Source="ic_email.png"
+                                Style="{StaticResource IconStyle}"
+                                />
+                        </Grid>
+                    </Frame>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
+</ContentPage>

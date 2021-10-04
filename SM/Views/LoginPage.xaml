@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SM.Views.LoginPage"
+             BackgroundImageSource="bgr1.png"
+             Shell.NavBarIsVisible="False">
+    <StackLayout>
+        <Image Source="logo.png" 
+                   WidthRequest="108"
+                   HeightRequest="114" 
+                   HorizontalOptions="Center" 
+                   Aspect="AspectFit"
+                   Margin="0,159,0,0" 
+                   />
+        <Label
+                  Text="SchoolMART" 
+                  FontAttributes="Bold" 
+                  FontSize="40"
+                  HorizontalOptions="Center" 
+                  Margin="0,14,0,0" 
+                  TextColor="#23233C"
+                />
+        
+        <!--Input email and Passwork-->
+        <Entry
+                Placeholder="Tên đăng nhập"            
+                MaxLength="25"
+                Style="{StaticResource entrystyle}"
+                />
+        <Entry
+                IsPassword="True"
+                IsSpellCheckEnabled="False"
+                IsTextPredictionEnabled="False"
+                Placeholder="Mật khẩu"            
+                MaxLength="25"
+                Style="{StaticResource entrystyle}"
+                />
+        
+        <!--Check Remember Account-->
+        <StackLayout Orientation="Horizontal" Margin="42,23,0,0">
+            <CheckBox
+                    IsChecked="False"
+                    Color="#98ABF9"
+                />
+            <Label
+                    Text="ghi nhớ đăng nhập"
+                    TextColor="Black" FontSize="10"
+                    VerticalOptions="Center"
+                    />
+        </StackLayout>
+        
+        <!--Login-->
+        <Button
+                x:Name="BtnLogin"
+                Text="Đăng Nhập"
+                TextTransform="None"
+                Margin="0,22,0,0"
+                Padding="0,0,1,0"       
+                Style="{StaticResource btnblack}"
+                Clicked="BtnLogin_Clicked"
+                />
+    </StackLayout>
+</ContentPage>

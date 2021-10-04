@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Shell xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:SM.Views"
+             x:Class="SM.AppShell"
+             Shell.BackgroundColor="{StaticResource blue}">
+    <ShellItem Route="LoginPage">
+        <ShellContent ContentTemplate="{DataTemplate local:LoginPage}"/>
+    </ShellItem>
+
+    <TabBar Style="{StaticResource BaseStyle}">
+        <Tab Icon="ic_more.png"
+             >
+            <ShellContent ContentTemplate="{DataTemplate local:MorePage}" Route="MorePage"/>
+        </Tab>
+        <Tab
+            Icon="ic_home.png"
+                >
+            <ShellContent ContentTemplate="{DataTemplate local:GvMainPage}" Route="GvMainPage"/>
+        </Tab>
+        <Tab
+            Icon="ic_newfeed.png"
+            >
+            <ShellContent Title="Sổ Đầu Bài"
+                    ContentTemplate="{DataTemplate local:SoDauBaiPage}" Route="SoDauBaiPage"/>
+            <ShellContent Title="Thông Tin"
+                    ContentTemplate="{DataTemplate local:InfoPage}" Route="InfoPage"/>
+        </Tab>
+    </TabBar>
+
+</Shell>

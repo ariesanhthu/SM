@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SM.Views.MorePage"
+             BackgroundColor="{StaticResource bgr}"
+             Shell.NavBarIsVisible="False">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ScrollView>
+        <Grid RowSpacing="20" Margin="0,25,0,0" Padding="0,20,0,0"
+              HorizontalOptions="Center">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+            
+        <!--Cardview BXH-->
+            <Frame
+            Grid.Row="0"
+            Style="{StaticResource CardviewFrameStyle}">
+                <Grid>
+                    <StackLayout Style="{StaticResource CardviewStackLayout}">
+                        <Image Style="{StaticResource CardviewImageStyle}"
+                               Source="bgr_BXH.png">
+                        </Image>
+                    </StackLayout>
+
+                    <!--OnClick here-->
+                    <StackLayout>
+                        
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Button_BXH_Clicked"/>
+                        </StackLayout.GestureRecognizers>
+                        
+                        <Label
+                        Text="Bảng Xếp Hạng"
+                        Style="{StaticResource CardviewLabelStyle}"
+                        />
+                    </StackLayout>
+                </Grid>
+            </Frame>
+            
+            <!--Cardview Thong tin lop(info class-> (gv,hs,sdb))-->
+            <Frame Grid.Row="1"
+                   Style="{StaticResource CardviewFrameStyle}">
+                <Grid>
+                    <StackLayout Style="{StaticResource CardviewStackLayout}">
+                        <Image Style="{StaticResource CardviewImageStyle}"
+                               Source="bgr_class.png">
+                        </Image>
+                    </StackLayout>
+                    
+                    <!--OnClick here-->
+                    <StackLayout>
+                        
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Button_Info_Clicked"/>
+                        </StackLayout.GestureRecognizers>
+                        
+                        <Label
+                        Text="Thông Tin lớp"
+                        Style="{StaticResource CardviewLabelStyle}"
+                        />
+                    </StackLayout>
+                </Grid>
+            </Frame>
+            
+            <!--Cardview Lop truc-->
+            <Frame
+            Grid.Row="2"
+            Style="{StaticResource CardviewFrameStyle}">
+                <Grid>
+                    <StackLayout Style="{StaticResource CardviewStackLayout}">
+                        <Image
+                            Source="bgr_loptruc.png"
+                            Style="{StaticResource CardviewImageStyle}"/>
+                    </StackLayout>
+                    <StackLayout>
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Button_LopTruc_Tapped"/>
+                        </StackLayout.GestureRecognizers>
+                        <Label
+                            Text="Lớp Trực"
+                            Style="{StaticResource CardviewLabelStyle}"/>
+                    </StackLayout>
+                </Grid>
+            </Frame>
+            
+            <!--Cardview Setting-->
+            <Frame
+            Grid.Row="3"
+            Style="{StaticResource CardviewFrameStyle}">
+                <Grid>
+                    <StackLayout Style="{StaticResource CardviewStackLayout}">
+                        <Image
+                            Source="bgr_setting.png"
+                            Style="{StaticResource CardviewImageStyle}"/>
+                    </StackLayout>
+                    <StackLayout>
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Button_Setting_Tapped"/>
+                        </StackLayout.GestureRecognizers>
+                        <Label
+                            Text="Cài đặt"
+                            Style="{StaticResource CardviewLabelStyle}"
+                        />
+                    </StackLayout>
+                </Grid>
+            </Frame>
+        </Grid>
+    </ScrollView>
+</ContentPage>

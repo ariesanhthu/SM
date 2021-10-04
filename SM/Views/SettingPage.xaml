@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SM.Views.SettingPage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="ButtonFrame" TargetType="Frame">
+                <Setter Property="BackgroundColor" Value="Transparent"/>
+                <Setter Property="HeightRequest" Value="30"/>
+                <Setter Property="HorizontalOptions" Value="StartAndExpand"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <StackLayout Margin="34,24,34,0">
+        <Frame Style="{StaticResource ButtonFrame}">
+            <Frame.GestureRecognizers>
+                <TapGestureRecognizer x:Name="Button_SetInfo"  Tapped="Button_SetInfo_Tapped"/>
+            </Frame.GestureRecognizers>
+            <StackLayout Orientation="Horizontal">
+                <Image Style="{StaticResource IconStyle}"
+                       Source="ic_account.png"
+                       HeightRequest="18"
+                       WidthRequest="18"
+                       HorizontalOptions="Start"
+                       VerticalOptions="Center"/>
+                <Label Text="Thông Tin"
+                       Style="{StaticResource TextTitleStyle}"
+                       FontSize="20"
+                       VerticalOptions="Center"/>
+            </StackLayout>
+        </Frame>
+    </StackLayout>
+</ContentPage>

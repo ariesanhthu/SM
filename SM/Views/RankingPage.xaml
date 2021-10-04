@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SM.Views.RankingPage"
+             xmlns:vm="clr-namespace:SM.ViewModels"
+             xmlns:v="clr-namespace:SM.Views"
+             BackgroundImageSource="bgr_page_BXH.png"
+             Shell.NavBarIsVisible="False"
+             >
+    <ContentPage.BindingContext>
+        <vm:RakingViewModel/>
+    </ContentPage.BindingContext>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="ic_HeaderStyle" TargetType="Image">
+                <Setter Property="HeightRequest" Value="88"/>
+                <Setter Property="WidthRequest" Value="63"/>
+                <Setter Property="Aspect" Value="AspectFit"/>
+                <Setter Property="HorizontalOptions" Value="Center"/>
+            </Style>
+            <Style x:Key="ic_CardStyle" TargetType="Image">
+                <Setter Property="HeightRequest" Value="32"/>
+                <Setter Property="WidthRequest" Value="26" />
+                <Setter Property="Aspect" Value="AspectFit"/>
+                <Setter Property="Source" Value="{Binding RankImg}"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <Grid RowDefinitions="auto,auto,auto"
+          Margin="10,10,10,0">
+        <!--Heading-->
+        <Label 
+            Grid.Row="0"
+            Text="BẢNG XẾP HẠNG"
+            FontAttributes="Bold"
+            TextColor="Black"
+            HorizontalOptions="Center"
+            FontSize="25"
+            Margin="0,80,0,0"/>
+        <!--Overview Ranking-->
+        <Grid
+            Grid.Row="1"
+            ColumnDefinitions="auto,auto,auto"
+            Margin="0,10,0,0"
+            HorizontalOptions="Center">
+            <StackLayout Grid.Column="0"
+                         Orientation="Vertical"
+                         HorizontalOptions="Center">
+                <Image Style="{StaticResource ic_HeaderStyle}"
+                       Source="ic_secondPrize.png"
+                        />
+                <Label Text="5 lớp"
+                       FontSize="10"
+                       HorizontalOptions="Center"
+                       Style="{StaticResource TextNormalStyle}"/>
+            </StackLayout>
+            <StackLayout Grid.Column="1"
+                         Orientation="Vertical">
+                <Image Style="{StaticResource ic_HeaderStyle}"
+                       Source="ic_firstPrize.png"
+                       HeightRequest="134"
+                       WidthRequest="109"
+                        />
+                <Label Text="15 lớp"
+                       Style="{StaticResource TextTitleStyle}"
+                       HorizontalOptions="Center"/>
+            </StackLayout>
+            <StackLayout Grid.Column="2"
+                         Orientation="Vertical"
+                         HorizontalOptions="Center">
+                <Image Style="{StaticResource ic_HeaderStyle}"
+                       Source="ic_thirdPrize.png"
+                        />
+                <Label Text="6 lớp"
+                       FontSize="10"
+                       HorizontalOptions="Center"
+                       Style="{StaticResource TextNormalStyle}"/>
+            </StackLayout>
+        </Grid>
+        <!--List Raking-->
+        <CollectionView
+            ItemsSource="{Binding ManageClasses}"
+            Grid.Row="2"
+            >
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Padding="0,10,0,0">
+                        <Frame HasShadow="True" CornerRadius="20"
+                               HeightRequest="20"
+                               WidthRequest="300">
+                            <Grid ColumnDefinitions="auto,*,auto,auto">
+                                <Image Grid.Column="0"
+                                       Style="{StaticResource ic_CardStyle}"/>
+                                <Label 
+                                    Text="{Binding ClassName}"
+                                    Style="{StaticResource TextTitleStyle}"
+                                    Grid.Column="1"
+                                    HorizontalOptions="Start"
+                                    VerticalOptions="Center"/>
+                                <Label Grid.Column="2"
+                                       Text="{Binding SumVP, StringFormat='VP: {0}'}"
+                                       Style="{StaticResource TextNormalStyle}"/>
+                                <Label Grid.Column="3"
+                                       Text="{Binding SumAbsent, StringFormat='V: {0}'}"
+                                       Style="{StaticResource TextNormalStyle}"
+                                       HorizontalOptions="End"
+                                       Margin="0,0,10,0"/>
+                            </Grid>                            
+                        </Frame>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
+</ContentPage>
